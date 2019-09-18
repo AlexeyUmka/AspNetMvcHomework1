@@ -13,14 +13,14 @@ namespace AspNetMvcHomework1.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Guest()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Worksheet()
         {
             ViewBag.Message = "Your contact page.";
 
