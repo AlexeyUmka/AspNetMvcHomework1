@@ -1,17 +1,44 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<section class="feedbackForm">
+    <form method="post">
+        <div class="form-group">
+            <label for="inputName">Your name</label>
+            <input type="email" class="form-control" id="inputName" placeholder="Enter your name" />
+        </div>
+        <div class="form-group">
+            <label for="inputReview">Your review</label>
+            <textarea class="form-control" id="inputReview" placeholder="Enter your opinion"></textarea>
+        </div>
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </div>
+    </form>
+    <hr />
+</section>
+<section class="reviwes">
+    <div class="reviewsHeader text-center">
+        <h2>Reviews</h2>
+    </div>
+    <article class="row reviewSection">
+        <div class="author col-12 col-md-4 col-xl-2">
+            <img class="rounded" src="~/Content/Images/Avatar.jpg" alt="Author image" />
+            <p class="reviewDate">2019</p>
+            <p class="reviewAuthor">Dungeon Master</p>
+        </div>
+        <div class="authorText col-12 col-md-8 col-xl-10">
+            <p>It was a very impressve Show, Thank you a lot!</p>
+        </div>
+    </article>
+    <article class="row reviewSection">
+        <div class="authorText col-12 col-md-8 col-xl-10">
+            <p>You are so talanted!</p>
+        </div>
+        <div class="author col-12 col-md-4 col-xl-2">
+            <img class="rounded" src="~/Content/Images/Avatar.jpg" alt="Author image" />
+            <p class="reviewDate">2019</p>
+            <p class="reviewAuthor">Dungeon Master</p>
+        </div>
+    </article>
+</section>
