@@ -28,8 +28,9 @@ menu a {
     background-color: #007BFF;
     color: white;
 }
-.articleHeader{
-    font-size: 26px;
+span.articleTitle {
+    color: red;
+    font-size: 24px;
 }
 .row{
     margin: 0;
