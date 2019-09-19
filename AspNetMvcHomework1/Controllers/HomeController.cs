@@ -23,8 +23,10 @@ namespace AspNetMvcHomework1.Controllers
             return View(ReviewsRepository.reviews);
         }
         [HttpPost]
-        public ActionResult Guest(string inputName, string inputReview)
+        public ActionResult Guest(string inputName, string inputReview, string deleteComments)
         {
+            if (deleteComments == "on")
+                ReviewsRepository.reviews = new List<Review>();
             ReviewsRepository.reviews.Insert(0,new Review(inputName, inputReview));
             return View(ReviewsRepository.reviews);
         }
