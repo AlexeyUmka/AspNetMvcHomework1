@@ -14,12 +14,12 @@
     </header>
     <section class="row mainPart">
         <main class="col-12 col-md-8 col-lg-10">
-        @RenderBody()
+            @RenderBody()
         </main>
         <menu class="col-12 col-md-4 col-lg-2 bg-primary nav flex-column">
             @Html.ActionLink("Main", "Index")
             @Html.ActionLink("Guest", "Guest")
-            @Html.ActionLink("Worksheet", "Worksheet")
+            @Html.ActionLink("JOIN?)", "Worksheet")
         </menu>
     </section>
     <footer class="row justify-content-center bg-primary">
@@ -29,5 +29,16 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        var menu = document.querySelector(".mainPart menu");
+        
+        setInterval(MenuPosition, 100);
+        function MenuPosition() {
+            if (window.innerWidth < 768)
+                menu.classList.add("smallscreenMenu");
+            else
+                menu.classList.remove("smallscreenMenu");
+        }
+    </script>
 </body>
 </html>

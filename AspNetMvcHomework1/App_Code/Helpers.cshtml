@@ -1,1 +1,51 @@
-﻿
+﻿@helper DisplayReviews(List<AspNetMvcHomework1.Models.Review> reviews)
+{
+    bool f = false;
+    foreach (AspNetMvcHomework1.Models.Review r in reviews)
+    {
+        if (f)
+        {
+            <article class="row reviewSection">
+                <div class="author col-12 col-md-4 col-xl-2">
+                    <img class="rounded" src="~/Content/Images/Avatar.png" alt="Author image" />
+                    <p class="reviewDate">2019</p>
+                    <p class="reviewAuthor">@r.Name</p>
+                </div>
+                <div class="authorText col-12 col-md-8 col-xl-10">
+                    <p>@r.ReviewMes</p>
+                </div>
+            </article>
+            f = false;
+        }
+        else
+        {
+            <article class="row reviewSection">
+                <div class="authorText col-12 col-md-8 col-xl-10">
+                    <p>@r.ReviewMes</p>
+                </div>
+                <div class="author col-12 col-md-4 col-xl-2">
+                    <img class="rounded" src="~/Content/Images/Avatar.png" alt="Author image" />
+                    <p class="reviewDate">2019</p>
+                    <p class="reviewAuthor">@r.Name</p>
+                </div>
+            </article>
+            f = true;
+        }
+    }
+}
+@helper DisplayWorksheet(AspNetMvcHomework1.Models.SheetInformation m)
+{
+    <div class="worksheetInformation">
+        Name:<p>@m.Name</p>
+        Surname:<p>@m.Surname</p>
+        Gender:<p>@m.Gender</p>
+        Special message:<p>@m.Wishes</p>
+        @m.Name are interested in:
+        <p>
+            @foreach (string s in m.Interests)
+            {
+                @s<br />
+            }
+        </p>
+    </div>
+}

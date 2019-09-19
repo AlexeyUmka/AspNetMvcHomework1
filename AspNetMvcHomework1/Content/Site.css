@@ -19,7 +19,7 @@ textarea {
     max-width: 100%;
 }
 menu {
-    font-size: 18px;
+    font-size: 1.5rem;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -34,6 +34,9 @@ menu a:hover{
     text-decoration: none;
     color:  white;
     transition: 0.3s;
+}
+menu.smallscreenMenu{
+    order: -1;
 }
 .mainPart main {
     background-color: #B87BFF;
@@ -104,5 +107,8 @@ footer a:hover{
     color: white;
     border: 3px dashed white;
     margin-bottom: 10px;
+}
+.worksheetInformation > p{
+    color: white;
 }
 

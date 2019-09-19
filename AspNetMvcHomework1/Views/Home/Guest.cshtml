@@ -1,20 +1,18 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
+﻿@model List<AspNetMvcHomework1.Models.Review>
 <section class="feedbackForm">
     <form method="post">
         <hr />
         <div class="form-group">
             <label for="inputName">Your name</label>
-            <input type="text" class="form-control" id="inputName" placeholder="Enter your name" />
+            <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Enter your name(A-z) 2-30 chars" required pattern="[A-Za-z]{2,}" minlength="2" maxlength="30" />
         </div>
         <div class="form-group">
             <label for="inputReview">Your review</label>
-            <textarea class="form-control" id="inputReview" placeholder="Enter your opinion"></textarea>
+            <textarea class="form-control" name="inputReview" id="inputReview" placeholder="Enter your opinion" required pattern="[A-Za-z]{20,}" minlength="20" maxlength="255"></textarea>
         </div>
         <div class="text-center">
-        <button type="submit" class="btn btn-primary">SUBMIT</button>
-            </div>
+            <button type="submit" class="btn btn-primary">SUBMIT</button>
+        </div>
     </form>
     <hr />
 </section>
@@ -22,24 +20,6 @@
     <div class="reviewsHeader text-center">
         <h2>Reviews</h2>
     </div>
-    <article class="row reviewSection">
-        <div class="author col-12 col-md-4 col-xl-2">
-            <img class="rounded" src="~/Content/Images/Avatar.jpg" alt="Author image" />
-            <p class="reviewDate">2019</p>
-            <p class="reviewAuthor">Dungeon Master</p>
-        </div>
-        <div class="authorText col-12 col-md-8 col-xl-10">
-            <p>It was a very impressve Show, Thank you a lot!</p>
-        </div>
-    </article>
-    <article class="row reviewSection">
-        <div class="authorText col-12 col-md-8 col-xl-10">
-            <p>You are so talanted!</p>
-        </div>
-        <div class="author col-12 col-md-4 col-xl-2">
-            <img class="rounded" src="~/Content/Images/Avatar.jpg" alt="Author image" />
-            <p class="reviewDate">2019</p>
-            <p class="reviewAuthor">Dungeon Master</p>
-        </div>
-    </article>
+    @Helpers.DisplayReviews(Model)
 </section>
+<hr />
