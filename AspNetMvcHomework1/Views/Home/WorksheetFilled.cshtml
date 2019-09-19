@@ -1,0 +1,16 @@
+﻿@model AspNetMvcHomework1.Models.SheetInformation
+
+@{
+    ViewBag.Title = "WorksheetFilled";
+}
+
+<h1>@Model.Name</h1>
+<h2>@Model.Surname</h2>
+<h2>@Model.Wishes</h2>
+<p>
+    @Model.Name are interested in:<br />
+@foreach (string s in Model.Interests)
+{
+    @s<br />
+}
+</p>

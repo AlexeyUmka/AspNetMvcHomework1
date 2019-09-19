@@ -1,7 +1,50 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<p>Use this area to provide additional information.</p>
+<section class="joinForm">
+    <hr />
+    <header>
+        <h2>Join to us NOW!</h2>
+    </header>
+    <form method="post">
+        <div class="form-group">
+            <label for="inputName">Your name</label>
+            <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Enter your name" />
+        </div>
+        <div class="form-group">
+            <label for="inputSurname">Your surname</label>
+            <input type="text" class="form-control" name="inputSurname" id="inputSurname" placeholder="Enter your surname" />
+        </div>
+        <div class="form-group">
+            <label for="inputWishes">Your Wishes</label>
+            <textarea class="form-control" name="inputWishes" id="inputWishes" placeholder="Enter your wishes"></textarea>
+        </div>
+        <h3>Chose your interests</h3>
+        <div class="form-check">
+            <input type="checkbox" name="inputBrazil" class="form-check-input" id="inputInterestsBrazil" />
+            <label for="inputInterestsBrazil" class="form-check-label">Brazil</label><br />
+            <input type="checkbox" name="inputDance" class="form-check-input" id="inputInterestsDance" />
+            <label for="inputInterestsDance" class="form-check-label">Dance</label><br />
+            <input type="checkbox" name="inputParty" class="form-check-input" id="inputInterestsParty" />
+            <label for="inputInterestsParty" class="form-check-label">Hot parties</label>
+        </div>
+        <h3>Chose your gender</h3>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="GenderRadios" id="inputGenderMale" value="Male" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Male
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="GenderRadios" id="inputGenderFemale" value="Female">
+            <label class="form-check-label" for="inputGenderFemale">
+                Female
+            </label>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">SUBMIT</button>
+        </div>
+        <hr />
+    </form>
+</section>
