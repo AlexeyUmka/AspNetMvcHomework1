@@ -1,23 +1,20 @@
-﻿@{
+﻿@model IEnumerable<AspNetMvcHomework1.Domain.Core.BasicModels.SimpleArticle>
+@{
     ViewBag.Title = "Home Page";
 }
+@foreach (AspNetMvcHomework1.Domain.Core.BasicModels.SimpleArticle article in Model)
+{
 <article>
     <header class="articleHeader text-center">
-        <span class="articleTitle">How to dance like me?</span>
+        <span class="articleTitle">@article.Topic</span>
     </header>
-    <p class="articlePublished">Published at:</p>
+    <p class="articlePublished">Published at: @article.PublishedAt</p>
     <hr />
     <div class="articleBody">
     <p class="text-justify">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus placerat, leo eu mollis pulvinar, enim risus lacinia tellus, sit amet volutpat eros elit non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue elit, vehicula quis pretium quis, scelerisque quis nibh. Praesent purus arcu, eleifend at convallis at, scelerisque a justo. Donec at pharetra justo. In tempor dolor lacus, quis aliquam mi aliquam eu. Maecenas lectus mi, volutpat et dictum vitae, efficitur ac ipsum. Sed eget eros in tellus dictum interdum. Maecenas viverra metus id mollis porttitor. Mauris tincidunt blandit nisl, nec tristique nibh suscipit non. In at elementum turpis.
-
-        Sed magna mauris, pellentesque at finibus vitae, vulputate ac turpis. Vestibulum non consectetur turpis, non pharetra ante. Aliquam ac odio quis sem rutrum tincidunt at et lectus. Maecenas consequat rhoncus eros, vitae lacinia nunc cursus a. Donec porta lacus nec ex porta, non faucibus leo ornare. Donec dignissim, ante in dignissim condimentum, magna turpis iaculis dolor, eget volutpat velit velit sit amet arcu. Sed eu ornare ipsum. Suspendisse ac feugiat tellus. Aliquam orci lectus, ornare in quam ac, consequat scelerisque turpis. Praesent sagittis aliquam nisl eu ullamcorper. Vestibulum at nisl lobortis, mollis ante et, tempor diam. Vivamus eu convallis orci. Donec nec dui consequat, imperdiet lectus ac, pulvinar neque. Donec bibendum, diam nec elementum dictum, ligula turpis pretium neque, ut tempor lacus enim sit amet ipsum. Suspendisse malesuada, tellus sed consectetur porttitor, purus nunc vehicula est, at dignissim neque eros eu mauris.
-
-        Aliquam nunc risus, condimentum a dolor non, pharetra pharetra nisi. Fusce nec sapien sit amet leo rhoncus finibus. Praesent quam lacus, facilisis nec tellus vitae, vestibulum efficitur lorem. Ut condimentum sed lectus blandit finibus. Cras blandit feugiat gravida. Vestibulum pellentesque, purus at euismod gravida, turpis neque sollicitudin diam, et malesuada nibh ex non nibh. Etiam vestibulum pellentesque sem, ut elementum metus consequat vestibulum. Etiam sed lectus sed massa pharetra fringilla. Maecenas viverra nibh nisl, eget aliquam diam vestibulum id. Sed elit augue, vestibulum non leo a, pulvinar feugiat est. Curabitur fringilla, nulla nec ornare faucibus, sapien nibh rutrum nisl, in fermentum est massa sit amet quam. Pellentesque pellentesque tincidunt lobortis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean vulputate et eros ut mattis. Suspendisse consectetur magna purus, vel condimentum ligula venenatis ut. Curabitur ultrices rutrum eros, sit amet fermentum lectus aliquam eget. Suspendisse dictum felis et lectus rhoncus, in semper lectus laoreet. Quisque ultricies molestie rutrum. Maecenas a lorem dolor. Vestibulum vel pellentesque ante. Vivamus sed mi ornare eros vehicula faucibus id a elit. Donec dignissim risus sit amet risus consequat dictum.
-
-        Quisque volutpat sodales tortor nec interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce lobortis venenatis nunc dignissim blandit. Etiam quis sollicitudin mauris, in dignissim nisl. Sed gravida vel nisl tristique tempor. Aenean efficitur eros ac erat consequat, vitae malesuada est consequat. Duis tristique elit lorem, id suscipit augue porta vel. Vivamus tincidunt mi id tristique blandit. Morbi commodo lectus non hendrerit ullamcorper. Cras pharetra tellus ac arcu vehicula, id accumsan elit cursus. Suspendisse vel libero nec magna feugiat congue eu facilisis lacus. Integer rutrum ac magna et euismod. Praesent ut nulla at tellus gravida bibendum nec a magna. Quisque quis risus quis urna condimentum vestibulum. Proin molestie risus ac mauris placerat, sed facilisis lorem laoreet.
+        <p><small>@article.ShortDescription</small></p>
+        @article.Content
     </p>
     </div>
 </article>
+}
