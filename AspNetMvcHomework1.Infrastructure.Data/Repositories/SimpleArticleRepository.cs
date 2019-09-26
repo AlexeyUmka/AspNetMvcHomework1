@@ -13,11 +13,11 @@ namespace AspNetMvcHomework1.Infrastructure.Data.Repositories
 {
     public class SimpleArticleRepository : IRepository<SimpleArticle> 
     {
-        private ArticleContext db;
+        private BlogContext db;
 
-        public SimpleArticleRepository()
+        public SimpleArticleRepository(BlogContext context)
         {
-            this.db = new ArticleContext();
+            this.db = context;
         }
 
         public IEnumerable<SimpleArticle> GetElementsOfRepository()
@@ -45,31 +45,6 @@ namespace AspNetMvcHomework1.Infrastructure.Data.Repositories
             SimpleArticle SimpleArticle = db.SimpleArticles.Find(id);
             if (SimpleArticle != null)
                 db.SimpleArticles.Remove(SimpleArticle);
-        }
-
-        public void Save()
-        {
-            db.SaveChanges();
-        }
-
-        private bool disposed = false;
-
-        public virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    db.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

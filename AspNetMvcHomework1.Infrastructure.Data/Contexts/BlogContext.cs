@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using AspNetMvcHomework1.Domain.Core.BasicModels;
 
-
 namespace AspNetMvcHomework1.Infrastructure.Data.Contexts
 {
-    public class ArticleContext : DbContext
+    public class BlogContext : DbContext
     {
-        static ArticleContext()
+        static BlogContext()
         {
-            Database.SetInitializer(new ArticleInitializer());
+            Database.SetInitializer(new BlogInitializer());
         }
         public DbSet<SimpleArticle> SimpleArticles { get; set; }
+        public DbSet<SimpleReview> SimpleReviews { get; set; }
+        public DbSet<SimpleSheet> SimpleSheets { get; set; }
     }
-    class ArticleInitializer : DropCreateDatabaseAlways<ArticleContext>
+    class BlogInitializer : DropCreateDatabaseIfModelChanges<BlogContext>
     {
-        protected override void Seed(ArticleContext articleContext)
+        protected override void Seed(BlogContext context)
         {
-            articleContext.SimpleArticles.AddRange(new List<SimpleArticle>(){
+            context.SimpleArticles.AddRange(new List<SimpleArticle>(){
                 new SimpleArticle() { Topic="Topic of first article", Content="Content of first article", PublishedAt = DateTime.Now, ShortDescription="Short descritption of first article"},
                 new SimpleArticle { Topic="Topic of second article", Content="Content of second article", PublishedAt = DateTime.Now, ShortDescription="Short descritption of second article"}});
         }
