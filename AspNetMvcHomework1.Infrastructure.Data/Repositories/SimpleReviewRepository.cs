@@ -13,11 +13,11 @@ namespace AspNetMvcHomework1.Infrastructure.Data.Repositories
 {
     public class SimpleReviewRepository : IRepository<SimpleReview>
     {
-        private ReviewContext db;
+        private BlogContext db;
 
-        public SimpleReviewRepository()
+        public SimpleReviewRepository(BlogContext context)
         {
-            this.db = new ReviewContext();
+            this.db = context;
         }
 
         public IEnumerable<SimpleReview> GetElementsOfRepository()
@@ -45,31 +45,6 @@ namespace AspNetMvcHomework1.Infrastructure.Data.Repositories
             SimpleReview SimpleReview = db.SimpleReviews.Find(id);
             if (SimpleReview != null)
                 db.SimpleReviews.Remove(SimpleReview);
-        }
-
-        public void Save()
-        {
-            db.SaveChanges();
-        }
-
-        private bool disposed = false;
-
-        public virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    db.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

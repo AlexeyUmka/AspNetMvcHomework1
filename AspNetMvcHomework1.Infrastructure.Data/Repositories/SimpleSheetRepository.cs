@@ -12,11 +12,11 @@ namespace AspNetMvcHomework1.Infrastructure.Data.Repositories
 {
     public class SimpleSheetRepository
     {
-        private SheetContext db;
+        private BlogContext db;
 
-        public SimpleSheetRepository()
+        public SimpleSheetRepository(BlogContext context)
         {
-            this.db = new SheetContext();
+            this.db = context;
         }
 
         public IEnumerable<SimpleSheet> GetElementsOfRepository()
@@ -44,31 +44,6 @@ namespace AspNetMvcHomework1.Infrastructure.Data.Repositories
             SimpleSheet SimpleSheet = db.SimpleSheets.Find(id);
             if (SimpleSheet != null)
                 db.SimpleSheets.Remove(SimpleSheet);
-        }
-
-        public void Save()
-        {
-            db.SaveChanges();
-        }
-
-        private bool disposed = false;
-
-        public virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    db.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

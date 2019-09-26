@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AspNetMvcHomework1.Domain.Core.BasicInterfaces
 {
-    public interface ISimpleSheetInformation
+    public interface ISimpleSheet
     {
+        int SimpleSheetId { get; set; }
         string Name { get; set; }
         string Surname { get; set; }
         string Wishes { get; set; }
