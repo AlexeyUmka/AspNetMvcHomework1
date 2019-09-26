@@ -4,31 +4,31 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AspNetMvcHomework1.Models;
+using AspNetMvcHomework1.Infrastructure.Data.Contexts;
+using AspNetMvcHomework1.Infrastructure.Data.Repositories;
+using AspNetMvcHomework1.Domain.Core.BasicModels;
 
 namespace AspNetMvcHomework1.Controllers
 {
-    public static class ReviewsRepository
-    {
-        public static List<Review> reviews = new List<Review>();
-    }
     public class HomeController : Controller
     {
+        SimpleArticleRepository ar = new SimpleArticleRepository();
+        SimpleReviewRepository rc = new SimpleReviewRepository();
         public ActionResult Index()
         {
-            return View();
+            return View(ar.GetElementsOfRepository());
         }
         [HttpGet]
         public ActionResult Guest()
         {
-            return View(ReviewsRepository.reviews);
+            return View(rc.GetElementsOfRepository());
         }
         [HttpPost]
-        public ActionResult Guest(string inputName, string inputReview, string deleteComments)
+        public ActionResult Guest(string inputName, string inputReview)
         {
-            if (deleteComments == "on")
-                ReviewsRepository.reviews = new List<Review>();
-            ReviewsRepository.reviews.Insert(0,new Review(inputName, inputReview));
-            return View(ReviewsRepository.reviews);
+            rc.Create(new SimpleReview() { Name = inputName, ReviewMes = inputReview, PostedAt = DateTime.Now });
+            rc.Save();
+            return View(rc.GetElementsOfRepository());
         }
         [HttpGet]
         public ActionResult Worksheet()

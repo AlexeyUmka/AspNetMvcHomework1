@@ -1,14 +1,14 @@
-﻿@helper DisplayReviews(List<AspNetMvcHomework1.Models.Review> reviews)
+﻿@helper DisplayReviews(IEnumerable<AspNetMvcHomework1.Domain.Core.BasicModels.SimpleReview> reviews)
 {
     bool f = false;
-    foreach (AspNetMvcHomework1.Models.Review r in reviews)
+    foreach (AspNetMvcHomework1.Domain.Core.BasicModels.SimpleReview r in reviews)
     {
         if (f)
         {
             <article class="row reviewSection">
                 <div class="author col-12 col-md-4 col-xl-2">
                     <img class="rounded" src="~/Content/Images/Avatar.png" alt="Author image" />
-                    <p class="reviewDate">2019</p>
+                    <p class="reviewDate">@r.PostedAt</p>
                     <p class="reviewAuthor">@r.Name</p>
                 </div>
                 <div class="authorText col-12 col-md-8 col-xl-10">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="author col-12 col-md-4 col-xl-2">
                     <img class="rounded" src="~/Content/Images/Avatar.png" alt="Author image" />
-                    <p class="reviewDate">2019</p>
+                    <p class="reviewDate">@r.PostedAt</p>
                     <p class="reviewAuthor">@r.Name</p>
                 </div>
             </article>

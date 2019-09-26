@@ -138,8 +138,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Review.cs" />
-    <Compile Include="Models\ReviewContext.cs" />
     <Compile Include="Models\SheetInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -234,6 +232,24 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AspNetMvcHomework1.Domain.Core\AspNetMvcHomework1.Domain.Core.csproj">
+      <Project>{7aafb301-5ff7-4789-b038-bcd28e719752}</Project>
+      <Name>AspNetMvcHomework1.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNetMvcHomework1.Domain.Interfaces\AspNetMvcHomework1.Domain.Interfaces.csproj">
+      <Project>{3f8aa1b5-b168-4e8d-918d-906ee23bcbb2}</Project>
+      <Name>AspNetMvcHomework1.Domain.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNetMvcHomework1.Infrastructure.Data\AspNetMvcHomework1.Infrastructure.Data.csproj">
+      <Project>{97c133d9-4112-4531-8282-15b798c0d1b6}</Project>
+      <Name>AspNetMvcHomework1.Infrastructure.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNetMvcHomework1.Services\AspNetMvcHomework1.Services.csproj">
+      <Project>{73e07c05-b74d-4b5e-b900-3e01c9c9f7f6}</Project>
+      <Name>AspNetMvcHomework1.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
