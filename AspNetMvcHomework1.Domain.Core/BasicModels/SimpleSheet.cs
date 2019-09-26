@@ -7,7 +7,7 @@ using AspNetMvcHomework1.Domain.Core.BasicInterfaces;
 
 namespace AspNetMvcHomework1.Domain.Core.BasicModels
 {
-    public class SimpleSheet : ISimpleSheetInformation
+    public class SimpleSheet : ISimpleSheet
     {
         public int SimpleSheetId { get; set; }
         public string Name { get; set; }

@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using AspNetMvcHomework1.Infrastructure.Data;
 using AspNetMvcHomework1.Domain.Core.BasicModels;
-
+//За основу взята Onion архитектура, центральное ядро - AspNetMvcHomework1.Domain.Core
+//Нижние уровни не знают о существовании верхних, а верхние могут знать о существовании нижних
+//Специальных моделей для View нет, тк нам подходят модели из ядра
 namespace AspNetMvcHomework1.Controllers
 {
     public class HomeController : Controller

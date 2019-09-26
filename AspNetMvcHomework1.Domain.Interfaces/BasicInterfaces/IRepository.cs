@@ -7,8 +7,7 @@ using AspNetMvcHomework1.Domain.Core.BasicInterfaces;
 
 namespace AspNetMvcHomework1.Domain.Interfaces.BasicInterfaces
 {
-    //Благодаря данному интерфейсу хранилище, которое будет реализовывать этот интерфейс,
-    //сможет указать тип статей, которые будут в нем хранится(производные от ISimpleArticle)
+    //Паттерн Репозиторий
     public interface IRepository<T> where T : class
     {
         IEnumerable<T> GetElementsOfRepository();

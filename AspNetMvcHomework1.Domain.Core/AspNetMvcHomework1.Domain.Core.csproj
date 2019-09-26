@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="BasicInterfaces\ISimpleArticle.cs" />
     <Compile Include="BasicInterfaces\ISimpleReview.cs" />
-    <Compile Include="BasicInterfaces\ISimpleSheetInformation.cs" />
+    <Compile Include="BasicInterfaces\ISimpleSheet.cs" />
     <Compile Include="BasicModels\SimpleArticle.cs" />
     <Compile Include="BasicModels\SimpleReview.cs" />
     <Compile Include="BasicModels\SimpleSheet.cs" />

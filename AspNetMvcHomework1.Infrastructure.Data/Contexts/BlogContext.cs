@@ -8,6 +8,7 @@ using AspNetMvcHomework1.Domain.Core.BasicModels;
 
 namespace AspNetMvcHomework1.Infrastructure.Data.Contexts
 {
+    //Контекст базы данных BlogContext, используется CodeFirst
     public class BlogContext : DbContext
     {
         static BlogContext()
