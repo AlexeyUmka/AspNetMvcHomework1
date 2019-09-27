@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AspNetMvcHomework1.Domain.Core.BasicInterfaces;
+﻿using AspNetMvcHomework1.Domain.Core.BasicInterfaces;
+using System;
 
 namespace AspNetMvcHomework1.Domain.Core.BasicModels
 {

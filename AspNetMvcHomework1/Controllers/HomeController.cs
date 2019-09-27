@@ -13,6 +13,9 @@ namespace AspNetMvcHomework1.Controllers
     public class HomeController : Controller
     {
         UnitOfWork unitOfWork;
+        /// <summary>
+        /// Initialize a <see cref="UnitOfWork"/>
+        /// </summary>
         public HomeController()
         {
             unitOfWork = new UnitOfWork();
