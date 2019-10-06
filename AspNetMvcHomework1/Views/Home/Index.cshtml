@@ -1,8 +1,9 @@
-﻿@model AspNetMvcHomework1.Models.ArticleList
+﻿@using AspNetMvcHomework1.Helpers
+@model AspNetMvcHomework1.Models.Pagination.IndexViewModel
 @{
     ViewBag.Title = "Home Page";
 }
-@foreach (AspNetMvcHomework1.Models.Article article in Model.Articles)
+@foreach (AspNetMvcHomework1.Models.Article article in Model.ArticleList.Articles)
 {
     <article>
         <header class="articleHeader text-center">
@@ -25,4 +26,10 @@
             }
         </div>
     </article>
+}
+@if (Model.PageInfo.TotalPages > 1)
+{
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+</div>
 }

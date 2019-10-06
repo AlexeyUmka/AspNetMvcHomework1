@@ -12,10 +12,10 @@ namespace AspNetMvcHomework1.Domain.Core.BasicModels
     {
         public int SimpleReviewId { get; set; }
         [Required]
-        [StringLength(30)]
+        [StringLength(30, MinimumLength = 2)]
         public string Name { get; set; }
         [Required]
-        [StringLength(255)]
+        [StringLength(255, MinimumLength = 20)]
         public string ReviewMes { get; set; }
         [Required]
         public DateTime PostedAt { get; set; }

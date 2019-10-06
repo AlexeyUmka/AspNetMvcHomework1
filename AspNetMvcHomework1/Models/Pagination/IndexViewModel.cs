@@ -8,7 +8,7 @@ namespace AspNetMvcHomework1.Models.Pagination
 {
     public class IndexViewModel
     {
-        public IEnumerable<Article> Articles { get; set; }
+        public ArticleList ArticleList { get; set; }
         public PageInfo PageInfo { get; set; }
     }
 }

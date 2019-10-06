@@ -19,6 +19,9 @@ select,
 textarea {
     max-width: 100%;
 }
+.myValidation{
+    color: red;
+}
 menu {
     font-size: 1.5rem;
     margin: 0;

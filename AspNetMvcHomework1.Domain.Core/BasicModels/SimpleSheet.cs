@@ -12,13 +12,13 @@ namespace AspNetMvcHomework1.Domain.Core.BasicModels
     {
         public int SimpleSheetId { get; set; }
         [Required]
-        [StringLength(30)]
+        [StringLength(30, MinimumLength = 2)]
         public string Name { get; set; }
         [Required]
-        [StringLength(40)]
+        [StringLength(40, MinimumLength = 2)]
         public string Surname { get; set; }
         [Required]
-        [StringLength(255)]
+        [StringLength(255, MinimumLength = 20)]
         public string Wishes { get; set; }
         public List<string> Interests { get; set; } = new List<string>();
         [Required]

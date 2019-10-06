@@ -8,6 +8,7 @@ using AspNetMvcHomework1.Domain.Core.BasicModels;
 using AspNetMvcHomework1.Models;
 using AspNetMvcHomework1.Models.VoteSystem;
 using AspNetMvcHomework1.Domain.Core.BasicModels.VoteSystem;
+using AspNetMvcHomework1.Models.Pagination;
 using System.Data.Entity;
 
 namespace AspNetMvcHomework1.Controllers
@@ -29,7 +30,7 @@ namespace AspNetMvcHomework1.Controllers
         public ActionResult Vote(string inputVote, int votingID, int voterID)
         {
             bool f = false;
-            foreach(var w in unitOfWork.Votings.GetElement(votingID).Options.Split(','))
+            foreach (var w in unitOfWork.Votings.GetElement(votingID).Options.Split(','))
             {
                 if (w == inputVote)
                 {
@@ -46,17 +47,22 @@ namespace AspNetMvcHomework1.Controllers
                 ModelState.AddModelError("inputVote", "INVALID VOTE");
             return RedirectToActionPermanent("Index");
         }
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             ViewBag.CurrentAction = "Home/Index";
+            int pageSize = 5; // количество объектов на страницу
             articleList.Articles.AddSimpleArticles(unitOfWork.SimpleArticles.GetElementsOfRepository());
-            return View(articleList);
+            IEnumerable<Article> articlesPerPages = articleList.Articles.Skip((page - 1) * pageSize).Take(pageSize);
+            PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = articleList.Articles.Count };
+            articleList.Articles = articlesPerPages.ToList();
+            IndexViewModel ivm = new IndexViewModel { PageInfo = pageInfo, ArticleList = articleList };
+            return View(ivm);
         }
         [HttpPost]
         public ActionResult Article(int articleID)
         {
             articleList.Articles.AddSimpleArticle(unitOfWork.SimpleArticles.GetElement(articleID));
-            return View(articleList.Articles.First(a => a.ArticleID == articleID));
+            return View(articleList.Articles.Last());
         }
         [HttpGet]
         public ActionResult Guest()
@@ -66,9 +72,10 @@ namespace AspNetMvcHomework1.Controllers
         [HttpPost]
         public ActionResult Guest(string inputName, string inputReview, DateTime PostedAt)
         {
-            if (ModelState.IsValid)
+            SimpleReview simpleReview = new SimpleReview { Name = inputName.Replace(" ", ""), ReviewMes = inputReview.Replace(" ", ""), PostedAt = PostedAt };
+            if (TryValidateModel(simpleReview))
             {
-                unitOfWork.SimpleReviews.Create(new SimpleReview() { Name = inputName, ReviewMes = inputReview, PostedAt = PostedAt });
+                unitOfWork.SimpleReviews.Create(simpleReview);
                 unitOfWork.Save();
             }
             return View(unitOfWork.SimpleReviews.GetElementsOfRepository());
@@ -83,9 +90,9 @@ namespace AspNetMvcHomework1.Controllers
         {
             SimpleSheet sheet = new SimpleSheet()
             {
-                Name = inputName,
-                Surname = inputSurname,
-                Wishes = inputWishes,
+                Name = inputName.Replace(" ", ""),
+                Surname = inputSurname.Replace(" ", ""),
+                Wishes = inputWishes.Replace(" ", ""),
                 Gender = inputGender,
             };
             if (inputBrazil == "on")
@@ -94,8 +101,9 @@ namespace AspNetMvcHomework1.Controllers
                 sheet.Interests.Add("Dancing");
             if (inputParty == "on")
                 sheet.Interests.Add("Party");
-
-            return View("WorksheetFilled", sheet);
+            if (TryValidateModel(sheet))
+                return View("WorksheetFilled", sheet);
+            else return View();
         }
     }
 }

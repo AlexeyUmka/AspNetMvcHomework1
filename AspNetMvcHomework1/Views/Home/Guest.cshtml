@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<AspNetMvcHomework1.Domain.Core.BasicModels.SimpleReview>
-@Html.ValidationSummary()
+@Html.ValidationSummary("", new { @class = "myValidation" })
 <section class="feedbackForm">
     <form method="post">
         <hr />
@@ -24,6 +24,6 @@
     <div class="reviewsHeader text-center">
         <h2>Reviews</h2>
     </div>
-        @Helpers.DisplayReviews(Model)
+    @Helpers.DisplayReviews(Model)
 </section>
 <hr />
