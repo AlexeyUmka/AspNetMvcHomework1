@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AspNetMvcHomework1.Infrastructure.Data.Contexts;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +14,7 @@ namespace AspNetMvcHomework1
     {
         protected void Application_Start()
         {
+            Database.SetInitializer(new BlogInitializer());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

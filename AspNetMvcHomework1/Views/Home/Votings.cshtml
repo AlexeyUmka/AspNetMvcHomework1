@@ -1,0 +1,52 @@
+﻿<form method="post" action="Home/Vote">
+    <h3>WHO IS THE BEST DANCER IN THE WORLD?</h3>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="inputVote" id="inputVote" value="Ricardo" checked>
+        <label class="form-check-label" for="inputVote">
+            Ricardo
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="inputVote" id="inputVote" value="Milos">
+        <label class="form-check-label" for="inputVote">
+            Milos
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="inputVote" id="inputVote" value="ME">
+        <label class="form-check-label" for="inputVote">
+            ME
+        </label>
+    </div>
+    @Html.Hidden("votingID", 1)
+    @Html.Hidden("voterID", 1)
+    <div class="text-center">
+        <button type="submit" class="btn btn-dark">VOTE!</button>
+    </div>
+</form>
+<form method="post" action="Home/Vote">
+    <h3>WHO IS THE BEST DANCER IN THE WORLD? 2</h3>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="inputVote" id="inputVote" value="Ricardo" checked>
+        <label class="form-check-label" for="inputVote">
+            Ricardo
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="inputVote" id="inputVote" value="Milos">
+        <label class="form-check-label" for="inputVote">
+            Milos
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="inputVote" id="inputVote" value="ME">
+        <label class="form-check-label" for="inputVote">
+            ME
+        </label>
+    </div>
+    @Html.Hidden("votingID", 2)
+    @Html.Hidden("voterID", 1)
+    <div class="text-center">
+        <button type="submit" class="btn btn-dark">VOTE!</button>
+    </div>
+</form>

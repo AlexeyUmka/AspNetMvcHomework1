@@ -13,5 +13,6 @@ namespace AspNetMvcHomework1.Domain.Core.BasicInterfaces
          string Topic { get; set; }
          string ShortDescription { get; set; }
          string Content { get; set; }
+         string Tags { get; set; }
     }
 }

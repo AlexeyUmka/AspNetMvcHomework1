@@ -16,6 +16,40 @@ namespace AspNetMvcHomework1.Infrastructure.Data
         private SimpleArticleRepository simpleArticleRepository;
         private SimpleReviewRepository simpleReviewRepository;
         private SimpleSheetRepository simpleSheetRepository;
+        private VotingRepository votingRepository;
+        private VoteRepository voteRepository;
+        private VoterRepository voterRepository;
+        public BlogContext GetBlogContext()
+        {
+            return db;
+        }
+        public VoterRepository Voters
+        {
+            get
+            {
+                if (voterRepository == null)
+                    voterRepository = new VoterRepository(db);
+                return voterRepository;
+            }
+        }
+        public VoteRepository Votes
+        {
+            get
+            {
+                if (voteRepository == null)
+                    voteRepository = new VoteRepository(db);
+                return voteRepository;
+            }
+        }
+        public VotingRepository Votings
+        {
+            get
+            {
+                if (votingRepository == null)
+                    votingRepository = new VotingRepository(db);
+                return votingRepository;
+            }
+        }
         public SimpleArticleRepository SimpleArticles
         {
             get

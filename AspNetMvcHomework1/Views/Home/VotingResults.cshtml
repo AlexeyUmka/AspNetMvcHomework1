@@ -1,0 +1,38 @@
+﻿@model AspNetMvcHomework1.Models.VoteSystem.ElementsOfVoteSystemList
+@if (Model.Votes != null)
+{
+    var VotingsByMessage = Model.Votes.GroupBy(v => v.Voting.VotingMessage);
+    foreach (IGrouping<string, AspNetMvcHomework1.Models.VoteSystem.ViewVote> v in VotingsByMessage)
+    {
+        <p class="votingQuestion">@v.Key</p>
+        float votingsAmount = v.Count();
+        bool f = false;
+        string nowOption = null;
+        float OptionAmount = 0;
+        int percentage;
+        foreach (var t in v.OrderBy(o => o.SelectedOption))
+        {
+            if (nowOption == t.SelectedOption && f)
+            {
+                OptionAmount++;
+            }
+            else
+            {
+                percentage = (int)((OptionAmount / votingsAmount) * 100);
+                if (percentage != 0)
+                {
+                <p>@nowOption: @percentage%</p>
+                }
+                f = false;
+                OptionAmount = 1;
+            }
+            if (!f)
+            {
+                nowOption = t.SelectedOption;
+                f = true;
+            }
+        }
+        percentage = (int)((OptionAmount / votingsAmount) * 100);
+        <p>@nowOption: @percentage%</p>
+    }
+}

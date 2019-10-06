@@ -47,9 +47,15 @@
     <Compile Include="BasicInterfaces\ISimpleArticle.cs" />
     <Compile Include="BasicInterfaces\ISimpleReview.cs" />
     <Compile Include="BasicInterfaces\ISimpleSheet.cs" />
+    <Compile Include="BasicInterfaces\VoteSystem\IVote.cs" />
+    <Compile Include="BasicInterfaces\VoteSystem\IVoter.cs" />
+    <Compile Include="BasicInterfaces\VoteSystem\IVoting.cs" />
     <Compile Include="BasicModels\SimpleArticle.cs" />
     <Compile Include="BasicModels\SimpleReview.cs" />
     <Compile Include="BasicModels\SimpleSheet.cs" />
+    <Compile Include="BasicModels\VoteSystem\Vote.cs" />
+    <Compile Include="BasicModels\VoteSystem\Voter.cs" />
+    <Compile Include="BasicModels\VoteSystem\Voting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

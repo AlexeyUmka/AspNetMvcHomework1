@@ -5,21 +5,58 @@ using System.Web;
 using System.Web.Mvc;
 using AspNetMvcHomework1.Infrastructure.Data;
 using AspNetMvcHomework1.Domain.Core.BasicModels;
-//За основу взята Onion архитектура, центральное ядро - AspNetMvcHomework1.Domain.Core
-//Нижние уровни не знают о существовании верхних, а верхние могут знать о существовании нижних
-//Специальных моделей для View нет, тк нам подходят модели из ядра
+using AspNetMvcHomework1.Models;
+using AspNetMvcHomework1.Models.VoteSystem;
+using AspNetMvcHomework1.Domain.Core.BasicModels.VoteSystem;
+using System.Data.Entity;
+
 namespace AspNetMvcHomework1.Controllers
 {
     public class HomeController : Controller
     {
         UnitOfWork unitOfWork;
+        ArticleList articleList;
+        ElementsOfVoteSystemList elementsOfVoteSystemList;
         public HomeController()
         {
             unitOfWork = new UnitOfWork();
+            articleList = new ArticleList();
+            elementsOfVoteSystemList = new ElementsOfVoteSystemList();
+            elementsOfVoteSystemList.Votes.AddVoteFromDB((unitOfWork.GetBlogContext().Votes.Include(m => m.Voter).Include(m => m.Voting)).ToList());
+            ViewBag.ElementsOfVoteSystemList = elementsOfVoteSystemList;
+        }
+        [HttpPost]
+        public ActionResult Vote(string inputVote, int votingID, int voterID)
+        {
+            bool f = false;
+            foreach(var w in unitOfWork.Votings.GetElement(votingID).Options.Split(','))
+            {
+                if (w == inputVote)
+                {
+                    f = true;
+                    break;
+                }
+            }
+            if (f)
+            {
+                unitOfWork.Votes.Create(new Vote() { VoterID = voterID, VotingID = votingID, SelectedOption = inputVote });
+                unitOfWork.Save();
+            }
+            else
+                ModelState.AddModelError("inputVote", "INVALID VOTE");
+            return RedirectToActionPermanent("Index");
         }
         public ActionResult Index()
         {
-            return View(unitOfWork.SimpleArticles.GetElementsOfRepository());
+            ViewBag.CurrentAction = "Home/Index";
+            articleList.Articles.AddSimpleArticles(unitOfWork.SimpleArticles.GetElementsOfRepository());
+            return View(articleList);
+        }
+        [HttpPost]
+        public ActionResult Article(int articleID)
+        {
+            articleList.Articles.AddSimpleArticle(unitOfWork.SimpleArticles.GetElement(articleID));
+            return View(articleList.Articles.First(a => a.ArticleID == articleID));
         }
         [HttpGet]
         public ActionResult Guest()
@@ -27,10 +64,13 @@ namespace AspNetMvcHomework1.Controllers
             return View(unitOfWork.SimpleReviews.GetElementsOfRepository());
         }
         [HttpPost]
-        public ActionResult Guest(string inputName, string inputReview)
+        public ActionResult Guest(string inputName, string inputReview, DateTime PostedAt)
         {
-            unitOfWork.SimpleReviews.Create(new SimpleReview() { Name = inputName, ReviewMes = inputReview, PostedAt = DateTime.Now });
-            unitOfWork.Save();
+            if (ModelState.IsValid)
+            {
+                unitOfWork.SimpleReviews.Create(new SimpleReview() { Name = inputName, ReviewMes = inputReview, PostedAt = PostedAt });
+                unitOfWork.Save();
+            }
             return View(unitOfWork.SimpleReviews.GetElementsOfRepository());
         }
         [HttpGet]

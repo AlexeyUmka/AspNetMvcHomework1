@@ -1,20 +1,28 @@
-﻿@model IEnumerable<AspNetMvcHomework1.Domain.Core.BasicModels.SimpleArticle>
+﻿@model AspNetMvcHomework1.Models.ArticleList
 @{
     ViewBag.Title = "Home Page";
 }
-@foreach (AspNetMvcHomework1.Domain.Core.BasicModels.SimpleArticle article in Model)
+@foreach (AspNetMvcHomework1.Models.Article article in Model.Articles)
 {
-<article>
-    <header class="articleHeader text-center">
-        <span class="articleTitle">@article.Topic</span>
-    </header>
-    <p class="articlePublished">Published at: @article.PublishedAt</p>
-    <hr />
-    <div class="articleBody">
-    <p class="text-justify">
-        <p><small>@article.ShortDescription</small></p>
-        @article.Content
-    </p>
-    </div>
-</article>
+    <article>
+        <header class="articleHeader text-center">
+            <span class="articleTitle">@article.Topic</span>
+        </header>
+        <p class="articlePublished">Published at: @article.PublishedAt</p>
+        <hr />
+        <div class="articleBody text-justify">
+            <p><small>@article.ShortDescription</small></p>
+            @if (article.Content.Length > 200)
+            {
+                <p>
+                    @article.Content.Substring(0, 200) . . . .
+                </p>
+                using (Html.BeginForm("Article", "Home"))
+                {
+                    <div>@Html.Hidden("articleID", article.ArticleID)</div>
+                    <p> <input type="submit" value="More" class="btn btn-warning" /> </p>
+                }
+            }
+        </div>
+    </article>
 }

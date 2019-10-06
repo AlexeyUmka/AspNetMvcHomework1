@@ -56,6 +56,9 @@
     <Compile Include="Repositories\SimpleArticleRepository.cs" />
     <Compile Include="Repositories\SimpleReviewRepository.cs" />
     <Compile Include="Repositories\SimpleSheetRepository.cs" />
+    <Compile Include="Repositories\VoteRepository.cs" />
+    <Compile Include="Repositories\VoterRepository.cs" />
+    <Compile Include="Repositories\VotingRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

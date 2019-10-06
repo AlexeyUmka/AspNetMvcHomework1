@@ -10,7 +10,7 @@ namespace AspNetMvcHomework1.Domain.Interfaces.BasicInterfaces
     //Паттерн Репозиторий
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> GetElementsOfRepository();
+        List<T> GetElementsOfRepository();
         T GetElement(int id);
         void Create(T article);
         void Update(T article);

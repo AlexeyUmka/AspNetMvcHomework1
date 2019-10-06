@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<AspNetMvcHomework1.Domain.Core.BasicModels.SimpleReview>
+@Html.ValidationSummary()
 <section class="feedbackForm">
     <form method="post">
         <hr />
@@ -12,6 +13,9 @@
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary">SUBMIT</button>
+        </div>
+        <div class="form-group">
+            @Html.Hidden("PostedAt", DateTime.Now)
         </div>
     </form>
     <hr />

@@ -138,6 +138,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticleList.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Pagination\IndexViewModel.cs" />
+    <Compile Include="Models\Pagination\PageInfo.cs" />
+    <Compile Include="Models\VoteSystem\ViewVote.cs" />
+    <Compile Include="Models\VoteSystem\ElementsOfVoteSystemList.cs" />
+    <Compile Include="Models\VoteSystem\ViewVoter.cs" />
+    <Compile Include="Models\VoteSystem\ViewVoting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -216,11 +224,13 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\WorksheetFilled.cshtml" />
+    <Content Include="Views\Home\Article.cshtml" />
+    <Content Include="Views\Home\VotingResults.cshtml" />
+    <Content Include="Views\Home\Votings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

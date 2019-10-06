@@ -10,7 +10,7 @@ using AspNetMvcHomework1.Domain.Core.BasicModels;
 
 namespace AspNetMvcHomework1.Infrastructure.Data.Repositories
 {
-    public class SimpleSheetRepository
+    public class SimpleSheetRepository : IRepository<SimpleSheet>
     {
         private BlogContext db;
 
@@ -19,7 +19,7 @@ namespace AspNetMvcHomework1.Infrastructure.Data.Repositories
             this.db = context;
         }
 
-        public IEnumerable<SimpleSheet> GetElementsOfRepository()
+        public List<SimpleSheet> GetElementsOfRepository()
         {
             return db.SimpleSheets.ToList();
         }

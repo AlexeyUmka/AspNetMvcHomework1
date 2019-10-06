@@ -1,0 +1,24 @@
+﻿@model AspNetMvcHomework1.Models.Article
+
+@{
+    ViewBag.Title = "Article";
+}
+<article>
+    <header class="articleHeader text-center">
+        <span class="articleTitle">@Model.Topic</span>
+    </header>
+    <p class="articlePublished">Published at: @Model.PublishedAt</p>
+    <hr />
+    <div class="articleBody text-justify">
+        <p><small>@Model.ShortDescription</small></p>
+        <p>@Model.Content</p>
+    </div>
+    <hr />
+    <div class="articleFooter">
+        @foreach(string w in Model.Tags.Split(','))
+        {
+            <span class="articleTag">@w</span>
+        }
+    </div>
+    <hr />
+</article>

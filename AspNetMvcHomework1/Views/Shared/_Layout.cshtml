@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="d-flex w-100 bg-primary justify-content-around" id="head">
@@ -20,6 +21,14 @@
             @Html.ActionLink("Main", "Index")
             @Html.ActionLink("Guest", "Guest")
             @Html.ActionLink("JOIN?)", "Worksheet")
+            @if (ViewBag.CurrentAction == "Home/Index")
+            {
+                @Html.Partial("Votings")
+            }
+            <div class="bg-secondary votingResults">
+                <h3>Voting Results:</h3>
+                @Html.Partial("VotingResults", ViewBag.ElementsOfVoteSystemList as AspNetMvcHomework1.Models.VoteSystem.ElementsOfVoteSystemList)
+            </div>
         </menu>
     </section>
     <footer class="row justify-content-center bg-primary">

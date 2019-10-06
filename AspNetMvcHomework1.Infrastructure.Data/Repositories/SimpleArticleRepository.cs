@@ -20,7 +20,7 @@ namespace AspNetMvcHomework1.Infrastructure.Data.Repositories
             this.db = context;
         }
 
-        public IEnumerable<SimpleArticle> GetElementsOfRepository()
+        public List<SimpleArticle> GetElementsOfRepository()
         {
             return db.SimpleArticles.ToList();
         }
